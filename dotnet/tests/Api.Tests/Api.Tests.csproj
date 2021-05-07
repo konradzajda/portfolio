@@ -6,7 +6,6 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     
-    
     <!-- Include analyzers in non-production environment only  -->
     <ItemGroup Condition="' $(Configuration)' != 'Release'">
         <!--   Stylecop     -->
