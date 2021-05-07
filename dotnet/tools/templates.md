@@ -2,7 +2,37 @@
 
 ## Project templates
 
+## Source project template
 
+```{ProjectName}.csproj```
+```xml
+
+    <Project Sdk="Microsoft.NET.Sdk">
+    
+        <PropertyGroup>
+            <TargetFramework>net5.0</TargetFramework>
+        </PropertyGroup>
+    
+        <!-- Include analyzers in non-production environment only  -->
+        <ItemGroup Condition="' $(Configuration)' != 'Release'">
+            <!-- Stylecop -->
+            <AdditionalFiles Include="..\..\..\stylecop.json" />
+            <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+                <PrivateAssets>all</PrivateAssets>
+                <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            </PackageReference>
+    
+            <!-- Other analyzers-->
+            <PackageReference Include="SonarAnalyzer.CSharp" Version="8.22.0.31243">
+                <PrivateAssets>all</PrivateAssets>
+                <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            </PackageReference>
+            
+        </ItemGroup>
+        
+    </Project>
+
+```
 
 ### Test project template
 
