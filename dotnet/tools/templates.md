@@ -20,9 +20,14 @@
     
     <!-- Include analyzers in non-production environment only  -->
     <ItemGroup Condition="' $(Configuration)' != 'Release'">
-        <!--   Stylecop     -->
+        <!-- Stylecop -->
         <AdditionalFiles Include="..\..\..\stylecop.json" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.22.0.31243">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -51,7 +56,7 @@
 ```xml
     <!-- Include analyzers in non-production environment only  -->
     <ItemGroup Condition="' $(Configuration)' != 'Release'">
-        <!--   Stylecop     -->
+        <!-- Stylecop -->
         <AdditionalFiles Include="..\..\..\stylecop.json" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
             <PrivateAssets>all</PrivateAssets>
@@ -60,6 +65,10 @@
     
         <!--   Other analyzers   -->
         <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.14" />
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.22.0.31243">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     
     </ItemGroup>
 
