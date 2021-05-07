@@ -57,6 +57,9 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     
+        <!--   Other analyzers   -->
+        <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.14" />
+    
     </ItemGroup>
 
 ```
