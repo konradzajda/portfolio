@@ -7,6 +7,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{168788F1-4B52-439A-AAF2-55913C0D6251}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{50F8D805-139C-42B0-83BF-AF37CE463843}"
+ProjectSection(SolutionItems) = preProject
+	dotnet\tools\templates.md = dotnet\tools\templates.md
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet", "dotnet", "{C9DD714C-E438-4E4F-A528-602A5C82B8A5}"
 ProjectSection(SolutionItems) = preProject
