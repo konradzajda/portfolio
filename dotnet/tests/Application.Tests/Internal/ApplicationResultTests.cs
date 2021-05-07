@@ -4,7 +4,7 @@
 
 using System;
 
-using Api.Abstractions;
+using Application.Abstractions;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;

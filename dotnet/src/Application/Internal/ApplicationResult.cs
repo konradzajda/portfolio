@@ -7,7 +7,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-using Api.Abstractions;
+using Application.Abstractions;
 
 [assembly: InternalsVisibleTo("Application.Tests")]
 

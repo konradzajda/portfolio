@@ -3,7 +3,7 @@
 // </copyright>
 
 #nullable enable
-namespace Api.Abstractions
+namespace Application.Abstractions
 {
     /// <summary>
     /// Defines properties for application's result of the request to the application layer.

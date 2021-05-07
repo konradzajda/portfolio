@@ -4,6 +4,7 @@
 
 using System;
 
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,8 @@ namespace Api
                         Title = "Api", Version = "v1",
                     });
             });
+
+            services.AddMediatR(ApplicationInfo.MediatRAssemblies);
 
             return services.BuildServiceProvider();
         }

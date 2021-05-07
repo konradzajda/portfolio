@@ -4,7 +4,7 @@
 
 using System.Net;
 
-namespace Api.Abstractions
+namespace Application.Abstractions
 {
     /// <summary>
     /// Defines properties for exception that was thrown in application layer.

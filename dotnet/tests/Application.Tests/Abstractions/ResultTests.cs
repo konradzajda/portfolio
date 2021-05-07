@@ -3,7 +3,6 @@
 // </copyright>
 
 #nullable enable
-using Api.Abstractions;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
