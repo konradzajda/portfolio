@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Ignore IDE's files
+*.idea
+
+# Keep launchsettings.json local
+launchsettings.json
