@@ -5,8 +5,11 @@
 #nullable enable
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
 using Api.Abstractions;
+
+[assembly: InternalsVisibleTo("Application.Tests")]
 
 namespace Application.Internal
 {
@@ -40,18 +43,17 @@ namespace Application.Internal
         /// Creates new failed <see cref="IResult{T}"/> with the application exception.
         /// </summary>
         /// <param name="exception">An application exception, see <see cref="IApplicationException"/>.</param>
-        /// <typeparam name="T">Type of the application exception.</typeparam>
+        /// <typeparam name="TResult">Type of the generic argument of the <see cref="IResult{T}"/>.</typeparam>
         /// <returns>A failed application result.</returns>
         /// <exception cref="ArgumentNullException">Thrown when exception is null.</exception>
-        internal static IResult<T> FromException<T>([NotNull] T exception)
-            where T : IApplicationException
+        internal static IResult<TResult> FromException<TResult>([NotNull] IApplicationException exception)
         {
             if (exception == null)
             {
                 throw new ArgumentNullException(nameof(exception));
             }
 
-            return new Result<T>
+            return new Result<TResult>
             {
                 Resource = default,
                 Exception = exception,
