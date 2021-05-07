@@ -6,7 +6,7 @@
 
 ### Test project template
 
-```{Project}.Tests.csproj ```
+```{ProjectName}.Tests.csproj ```
 ```xml
 
 <Project Sdk="Microsoft.NET.Sdk">
@@ -15,6 +15,7 @@
         <TargetFramework>net5.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
+        <RootNamespace>{ProjectName}</RootNamespace>
     </PropertyGroup>
     
     <!-- Include analyzers in non-production environment only  -->
