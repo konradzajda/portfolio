@@ -65,7 +65,9 @@
             </summary>
         </member>
         <member name="T:Api.Startup">
-            <inheritdoc />
+            <summary>
+            Startup class.
+            </summary>
         </member>
         <member name="M:Api.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
@@ -74,10 +76,16 @@
             <param name="environment">Provides details about host's environment, see <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
         </member>
         <member name="M:Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <inheritdoc/>
+            <summary>
+            Configures dependency injection container.
+            </summary>
+            <param name="services">A collection of the services.</param>
         </member>
         <member name="M:Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
-            <inheritdoc/>
+            <summary>
+            Configure middlewares.
+            </summary>
+            <param name="app">An application builder, see <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
         </member>
         <member name="T:Microsoft.AspNetCore.Mvc.ApplicationResultControllerBaseExtensions">
             <summary>

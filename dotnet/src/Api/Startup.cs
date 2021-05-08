@@ -2,17 +2,16 @@
 // Copyright (c) Konrad Zajda. All rights reserved.
 // </copyright>
 
-using System;
-
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Api
 {
-    /// <inheritdoc />
-    public class Startup : IStartup
+    /// <summary>
+    /// Startup class.
+    /// </summary>
+    public class Startup
     {
         private readonly IHostEnvironment environment;
 
@@ -25,24 +24,31 @@ namespace Api
             this.environment = environment;
         }
 
-        /// <inheritdoc/>
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        /// <summary>
+        /// Configures dependency injection container.
+        /// </summary>
+        /// <param name="services">A collection of the services.</param>
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddApi();
             services.AddApplication();
             services.AddInfrastructure();
-
-            return services.BuildServiceProvider();
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Configure middlewares.
+        /// </summary>
+        /// <param name="app">An application builder, see <see cref="IApplicationBuilder"/>.</param>
         public void Configure(IApplicationBuilder app)
         {
             if (this.environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", ApiInfo.Name + " " + ApiInfo.Version));
+                app.UseSwaggerUI(c =>
+                    c.SwaggerEndpoint(
+                        "/swagger/v1/swagger.json",
+                        "Name"));
             }
 
             app.UseHttpsRedirection();
