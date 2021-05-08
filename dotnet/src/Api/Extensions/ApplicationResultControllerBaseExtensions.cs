@@ -4,13 +4,22 @@
 
 using Application.Abstractions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Microsoft.AspNetCore.Mvc
 {
+    /// <summary>
+    /// Contains extension methods for conversing see <see cref="IResult{T}"/> into <see cref="IActionResult"/>.
+    /// </summary>
     public static class ApplicationResultControllerBaseExtensions
     {
+        /// <summary>
+        /// Creates new <see cref="IActionResult"/> from the <see cref="IResult{T}"/> containing application exception.
+        /// </summary>
+        /// <param name="controller">API controller.</param>
+        /// <param name="result">Application result to create action result from.</param>
+        /// <typeparam name="TResult">Generic type of the <see cref="IResult{T}"/>.</typeparam>
+        /// <typeparam name="TController">Type of the controller.</typeparam>
+        /// <returns>An action result.</returns>
         public static IActionResult FromApplicationException<TResult, TController>(this TController controller, IResult<TResult> result)
         where TController : ControllerBase
         {

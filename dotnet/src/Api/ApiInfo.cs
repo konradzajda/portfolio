@@ -14,6 +14,11 @@ namespace Api
     internal static class ApiInfo
     {
         /// <summary>
+        /// Name of the API.
+        /// </summary>
+        internal const string Name = "Portfolio";
+
+        /// <summary>
         /// Gets all assemblies containing MediatR related classes.
         /// </summary>
         internal static Assembly[] MediatRAssemblies => new[]
