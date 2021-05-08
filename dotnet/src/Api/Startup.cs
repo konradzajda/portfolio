@@ -48,7 +48,7 @@ namespace Api
                 app.UseSwaggerUI(c =>
                     c.SwaggerEndpoint(
                         "/swagger/v1/swagger.json",
-                        "Name"));
+                        ApiInfo.Name + " " + ApiInfo.Version));
             }
 
             app.UseHttpsRedirection();

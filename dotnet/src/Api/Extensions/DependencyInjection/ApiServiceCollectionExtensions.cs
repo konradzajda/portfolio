@@ -31,12 +31,14 @@ namespace Microsoft.Extensions.DependencyInjection
                     "v1",
                     new OpenApiInfo
                     {
-                        Title = ApiInfo.Name, Version = "v1",
+                        Title = ApiInfo.Name, Version = ApiInfo.Version,
                     });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, ApiDocsFileName));
             });
 
             services.AddMediatR(ApiInfo.MediatRAssemblies);
+
+            services.AddAutoMapper(ApiInfo.MapperProfiles);
         }
     }
 }

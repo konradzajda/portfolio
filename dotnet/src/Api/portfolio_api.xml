@@ -29,13 +29,14 @@
             An controller for managing personal details resources.
             </summary>
         </member>
-        <member name="M:Api.Personal.Controllers.PersonalDetailsController.#ctor(MediatR.IMediator)">
+        <member name="M:Api.Personal.Controllers.PersonalDetailsController.#ctor(MediatR.IMediator,AutoMapper.IMapper)">
             <summary>
             Initializes a new instance of the <see cref="T:Api.Personal.Controllers.PersonalDetailsController"/> class.
             </summary>
             <param name="mediator">A mediator, see <see cref="T:MediatR.IMediator"/>.</param>
+            <param name="mapper">A mapper, see <see cref="T:AutoMapper.IMapper"/>.</param>
         </member>
-        <member name="M:Api.Personal.Controllers.PersonalDetailsController.GetFirstNameAsync(System.Threading.CancellationToken)">
+        <member name="M:Api.Personal.Controllers.PersonalDetailsController.GetPersonalDetails(System.Threading.CancellationToken)">
             <summary>
             Gets person's first name.
             </summary>

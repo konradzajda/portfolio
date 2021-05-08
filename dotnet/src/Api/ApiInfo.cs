@@ -2,8 +2,8 @@
 // Copyright (c) Konrad Zajda. All rights reserved.
 // </copyright>
 
+using System;
 using System.Reflection;
-
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Api
@@ -24,6 +24,11 @@ namespace Api
         internal static Assembly[] MediatRAssemblies => new[]
         {
             Assembly.GetAssembly(typeof(ApplicationDependencyInjection)),
+        };
+
+        internal static Type[] MapperProfiles => new Type[]
+        {
+            typeof(ApiProfile),
         };
 
         /// <summary>
