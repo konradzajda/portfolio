@@ -40,10 +40,84 @@
             Gets a value indicating whether application's response is successful.
             </summary>
         </member>
+        <member name="T:Application.Abstractions.ITrackable">
+            <summary>
+            Defines properties for an object which updates are trackable in time.
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.ITrackable.CreationDateUtc">
+            <summary>
+            Gets a date of object's creation, expressed as Coordinated Universal Time (UTC).
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.ITrackable.UpdateDateUtc">
+            <summary>
+            Gets a date of object's last update, expressed as Coordinated Universal Time (UTC).
+            </summary>
+        </member>
+        <member name="T:Application.Abstractions.IUnique`1">
+            <summary>
+            Defines properties for a type which instances are unique and their uniqueness can be
+            verified by their unique key.
+            </summary>
+            <typeparam name="T">Type of the key.</typeparam>
+        </member>
+        <member name="P:Application.Abstractions.IUnique`1.Id">
+            <summary>
+            Gets a unique identifier of the object, which is unique across all instances of it's type.
+            </summary>
+        </member>
+        <member name="T:Application.Daos.PersonalDetailsDao">
+            <summary>
+            Represents data access object for the <see cref="T:Application.Resources.PersonalDetailsResource"/>.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.Id">
+            <summary>
+            Gets unique identifier, see <see cref="P:Application.Abstractions.IUnique`1.Id"/>.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.CreationDateUtc">
+            <summary>
+            Gets creation date, see <see cref="P:Application.Abstractions.ITrackable.CreationDateUtc"/>.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.UpdateDateUtc">
+            <summary>
+            Gets a date of the last update, see <see cref="P:Application.Abstractions.ITrackable.UpdateDateUtc"/>.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.FirstName">
+            <summary>
+            Gets or sets a first name of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.LastName">
+            <summary>
+            Gets or sets a last name of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.BirthDate">
+            <summary>
+            Gets or sets a birthdate of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Daos.PersonalDetailsDao.Location">
+            <summary>
+            Gets or sets a location of the person.
+            </summary>
+        </member>
         <member name="T:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler">
             <summary>
             Handler of the <see cref="T:Application.Queries.PersonalDetails.GetPersonalDetailsQuery"/>.
             </summary>
+        </member>
+        <member name="M:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler.#ctor(Application.Services.IPersonalDetailsContext,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler"/> class.
+            </summary>
+            <param name="context">A context of personal details, see <see cref="T:Application.Services.IPersonalDetailsContext"/>.</param>
+            <param name="mapper">A mapper, see <see cref="T:AutoMapper.IMapper"/>.</param>
         </member>
         <member name="M:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler.Handle(Application.Queries.PersonalDetails.GetPersonalDetailsQuery,System.Threading.CancellationToken)">
             <inheritdoc/>
@@ -51,6 +125,59 @@
         <member name="T:Application.Queries.PersonalDetails.GetPersonalDetailsQuery">
             <summary>
             Defines query for getting first name.
+            </summary>
+        </member>
+        <member name="T:Application.Resources.PersonalDetailsResource">
+            <summary>
+            Represents a resource of the personal details belonging to some person.
+            An resource is an object managed in application layer from the presentation layer.
+            </summary>
+        </member>
+        <member name="P:Application.Resources.PersonalDetailsResource.FirstName">
+            <summary>
+            Gets a first name of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Resources.PersonalDetailsResource.LastName">
+            <summary>
+            Gets a last name of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Resources.PersonalDetailsResource.BirthDate">
+            <summary>
+            Gets a birthdate of the person.
+            </summary>
+        </member>
+        <member name="P:Application.Resources.PersonalDetailsResource.Location">
+            <summary>
+            Gets a current location of the person.
+            </summary>
+        </member>
+        <member name="T:Application.Services.IPersonalDetailsContext">
+            <summary>
+            Defines properties and methods for managing data access objects from personal details context.
+            </summary>
+        </member>
+        <member name="P:Application.Services.IPersonalDetailsContext.Personals">
+            <summary>
+            Gets a <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1"/> for the personal details.
+            </summary>
+        </member>
+        <member name="M:Application.Services.IPersonalDetailsContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Saves changes applied to all data access objects.
+            </summary>
+            <param name="token">A <see cref="T:System.Threading.CancellationToken"/> used for cancelling asynchronous operations.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Application.Internal.ApplicationExceptions">
+            <summary>
+            Contains methods for creating predefined application exceptions.
+            </summary>
+        </member>
+        <member name="P:Application.Internal.ApplicationExceptions.NotFound">
+            <summary>
+            Gets an application exception which informs that requested resource was not found.
             </summary>
         </member>
         <member name="T:Application.Internal.ApplicationResult">
@@ -86,6 +213,16 @@
             Adds application's services.
             </summary>
             <param name="services">A collection of services, see <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+        </member>
+        <member name="T:AutoMapper.ApplicationProfile">
+            <summary>
+            Represents a <see cref="T:AutoMapper.Profile"/> of the application layer.
+            </summary>
+        </member>
+        <member name="M:AutoMapper.ApplicationProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:AutoMapper.ApplicationProfile"/> class.
+            </summary>
         </member>
     </members>
 </doc>

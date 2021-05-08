@@ -15,5 +15,22 @@
             </summary>
             <param name="services">A collection of services, see <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
         </member>
+        <member name="T:Infrastructure.Services.PersonalDetailsContext">
+            <summary>
+            Provides data access object managing based on the Entity Framework's <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Services.PersonalDetailsContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Infrastructure.Services.PersonalDetailsContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Infrastructure.Services.PersonalDetailsContext"/> class.
+            </summary>
+            <param name="options">Options of the context, see <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1"/>.</param>
+        </member>
+        <member name="P:Infrastructure.Services.PersonalDetailsContext.Personals">
+            <inheritdoc />
+        </member>
+        <member name="M:Infrastructure.Services.PersonalDetailsContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

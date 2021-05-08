@@ -30,23 +30,23 @@ namespace Application.Daos
         public DateTime UpdateDateUtc { get; init; }
 
         /// <summary>
-        /// Gets a first name of the person.
+        /// Gets or sets a first name of the person.
         /// </summary>
-        public string FirstName { get; init; }
+        public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets a last name of the person.
+        /// Gets or sets a last name of the person.
         /// </summary>
-        public string LastName { get; init; }
+        public string LastName { get; set; }
 
         /// <summary>
-        /// Gets a birthdate of the person.
+        /// Gets or sets a birthdate of the person.
         /// </summary>
-        public DateTime BirthDate { get; init; }
+        public DateTime BirthDate { get; set; }
 
         /// <summary>
-        /// Gets a location of the person.
+        /// Gets or sets a location of the person.
         /// </summary>
-        public string Location { get; init; }
+        public string Location { get; set; }
     }
 }
