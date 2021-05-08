@@ -10,8 +10,11 @@ using Application.Abstractions;
 using Application.Handlers.PersonalDetails;
 using Application.Queries.PersonalDetails;
 using Application.Resources;
+using Application.Services;
+using AutoMapper;
 using FluentAssertions;
 using MediatR;
+using NSubstitute;
 using Xunit;
 
 namespace Application.Contexts.PersonalDetails.Handlers.Query
@@ -22,7 +25,9 @@ namespace Application.Contexts.PersonalDetails.Handlers.Query
 
         public GetPersonalDetailsQueryHandlerTests()
         {
-            this.sut = new GetPersonalDetailsQueryHandler();
+            this.sut = new GetPersonalDetailsQueryHandler(
+                Substitute.For<IPersonalDetailsContext>(),
+                Substitute.For<IMapper>());
         }
 
         [Fact]

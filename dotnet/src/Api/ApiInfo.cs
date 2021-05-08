@@ -4,6 +4,8 @@
 
 using System;
 using System.Reflection;
+
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Api
@@ -29,6 +31,7 @@ namespace Api
         internal static Type[] MapperProfiles => new Type[]
         {
             typeof(ApiProfile),
+            typeof(ApplicationProfile),
         };
 
         /// <summary>

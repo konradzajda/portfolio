@@ -1,8 +1,7 @@
 using Api.Personal.Views;
 using Application.Resources;
-using AutoMapper;
 
-namespace Api
+namespace AutoMapper
 {
     public class ApiProfile : Profile
     {

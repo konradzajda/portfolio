@@ -2,6 +2,10 @@
 // Copyright (c) Konrad Zajda. All rights reserved.
 // </copyright>
 
+using Application.Services;
+using Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
@@ -15,7 +19,10 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">A collection of services, see <see cref="IServiceCollection"/>.</param>
         public static void AddInfrastructure(this IServiceCollection services)
         {
-            // ignored
+            services.AddDbContext<IPersonalDetailsContext, PersonalDetailsContext>(y =>
+            {
+                y.UseInMemoryDatabase("InMemory");
+            });
         }
     }
 }

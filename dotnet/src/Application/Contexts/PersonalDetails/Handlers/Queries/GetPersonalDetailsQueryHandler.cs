@@ -10,7 +10,11 @@ using Application.Abstractions;
 using Application.Internal;
 using Application.Queries.PersonalDetails;
 using Application.Resources;
+using Application.Services;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Handlers.PersonalDetails
 {
@@ -19,6 +23,15 @@ namespace Application.Handlers.PersonalDetails
     /// </summary>
     public class GetPersonalDetailsQueryHandler : IRequestHandler<GetPersonalDetailsQuery, IResult<PersonalDetailsResource>>
     {
+        private readonly IPersonalDetailsContext context;
+        private readonly IMapper mapper;
+
+        public GetPersonalDetailsQueryHandler(IPersonalDetailsContext context, IMapper mapper)
+        {
+            this.context = context;
+            this.mapper = mapper;
+        }
+
         /// <inheritdoc/>
         public Task<IResult<PersonalDetailsResource>> Handle(GetPersonalDetailsQuery request, CancellationToken cancellationToken)
         {
@@ -29,15 +42,22 @@ namespace Application.Handlers.PersonalDetails
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var details = new PersonalDetailsResource
-            {
-                FirstName = "Konrad",
-                LastName = "Zajda",
-                BirthDate = new DateTime(1997, 3, 22),
-                Location = "Gdańsk",
-            };
+            return this.HandleInternal(cancellationToken);
+        }
 
-            return Task.FromResult(ApplicationResult.FromResource(details));
+        private async Task<IResult<PersonalDetailsResource>> HandleInternal(CancellationToken token)
+        {
+            var details = await this.context.Personals
+                .ProjectTo<PersonalDetailsResource>(this.mapper.ConfigurationProvider)
+                .SingleOrDefaultAsync(token);
+
+            if (details == null)
+            {
+                return ApplicationResult.FromException<PersonalDetailsResource>(
+                    ApplicationExceptions.NotFound);
+            }
+
+            return ApplicationResult.FromResource(details);
         }
     }
 }
