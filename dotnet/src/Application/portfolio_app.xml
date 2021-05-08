@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Application</name>
+    </assembly>
+    <members>
+        <member name="T:Application.Abstractions.IApplicationException">
+            <summary>
+            Defines properties for exception that was thrown in application layer.
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.IApplicationException.StatusCode">
+            <summary>
+            Gets a <see cref="T:System.Net.HttpStatusCode"/> related to application's exception.
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.IApplicationException.Message">
+            <summary>
+            Gets a message of the exception.
+            </summary>
+        </member>
+        <member name="T:Application.Abstractions.IResult`1">
+            <summary>
+            Defines properties for application's result of the request to the application layer.
+            </summary>
+            <typeparam name="T">Type of the resource requested.</typeparam>
+        </member>
+        <member name="P:Application.Abstractions.IResult`1.Resource">
+            <summary>
+            Gets a requested resource.
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.IResult`1.Exception">
+            <summary>
+            Gets an application exception, see <see cref="T:Application.Abstractions.IApplicationException"/>.
+            </summary>
+        </member>
+        <member name="P:Application.Abstractions.IResult`1.Success">
+            <summary>
+            Gets a value indicating whether application's response is successful.
+            </summary>
+        </member>
+        <member name="T:Application.Handlers.PersonalDetails.GetFirstNameQueryHandler">
+            <summary>
+            Handler of the <see cref="T:Application.Queries.PersonalDetails.GetFirstNameQuery"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Handlers.PersonalDetails.GetFirstNameQueryHandler.Handle(Application.Queries.PersonalDetails.GetFirstNameQuery,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Application.Queries.PersonalDetails.GetFirstNameQuery">
+            <summary>
+            Defines query for getting first name.
+            </summary>
+        </member>
+        <member name="T:Application.Internal.ApplicationResult">
+            <summary>
+            Contains static methods for initializing <see cref="T:Application.Abstractions.IResult`1"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Internal.ApplicationResult.FromResource``1(``0)">
+            <summary>
+            Creates new successful <see cref="T:Application.Abstractions.IResult`1"/> with resource, see <see cref="P:Application.Abstractions.IResult`1.Resource"/>.
+            </summary>
+            <param name="resource">A resource, see <see cref="P:Application.Abstractions.IResult`1.Resource"/>.</param>
+            <typeparam name="T">Type of the resource requested.</typeparam>
+            <returns>A successful application result.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when resource is null.</exception>
+        </member>
+        <member name="M:Application.Internal.ApplicationResult.FromException``1(Application.Abstractions.IApplicationException)">
+            <summary>
+            Creates new failed <see cref="T:Application.Abstractions.IResult`1"/> with the application exception.
+            </summary>
+            <param name="exception">An application exception, see <see cref="T:Application.Abstractions.IApplicationException"/>.</param>
+            <typeparam name="TResult">Type of the generic argument of the <see cref="T:Application.Abstractions.IResult`1"/>.</typeparam>
+            <returns>A failed application result.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when exception is null.</exception>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ApplicationDependencyInjection">
+            <summary>
+            Contains extension methods for registering application layer's services in the dependency injection container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ApplicationDependencyInjection.AddApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds application's services.
+            </summary>
+            <param name="services">A collection of services, see <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+        </member>
+    </members>
+</doc>

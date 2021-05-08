@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>portfolio_app.xml</DocumentationFile>
     </PropertyGroup>
 
     <!-- Include analyzers in non-production environment only  -->
