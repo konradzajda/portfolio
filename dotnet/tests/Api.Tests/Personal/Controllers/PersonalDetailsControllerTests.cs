@@ -6,6 +6,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+using AutoMapper;
 using FluentAssertions;
 using MediatR;
 using NSubstitute;
@@ -19,7 +20,7 @@ namespace Api.Personal.Controllers
 
         public PersonalDetailsControllerTests()
         {
-            this.sut = new PersonalDetailsController(Substitute.For<IMediator>());
+            this.sut = new PersonalDetailsController(Substitute.For<IMediator>(), Substitute.For<IMapper>());
         }
 
         [Fact]
@@ -29,7 +30,7 @@ namespace Api.Personal.Controllers
             var token = new CancellationToken(true);
 
             // When
-            Func<Task> call = () => this.sut.GetFirstNameAsync(token);
+            Func<Task> call = () => this.sut.GetPersonalDetails(token);
 
             // Then
             await call.Should().ThrowExactlyAsync<OperationCanceledException>();

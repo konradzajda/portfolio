@@ -4,8 +4,9 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-
+using Api.Personal.Views;
 using Application.Queries.PersonalDetails;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,14 +20,17 @@ namespace Api.Personal.Controllers
     public class PersonalDetailsController : ControllerBase
     {
         private readonly IMediator mediator;
+        private readonly IMapper mapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonalDetailsController"/> class.
         /// </summary>
         /// <param name="mediator">A mediator, see <see cref="IMediator"/>.</param>
-        public PersonalDetailsController(IMediator mediator)
+        /// <param name="mapper">A mapper, see <see cref="IMapper"/>.</param>
+        public PersonalDetailsController(IMediator mediator, IMapper mapper)
         {
             this.mediator = mediator;
+            this.mapper = mapper;
         }
 
         /// <summary>
@@ -35,15 +39,16 @@ namespace Api.Personal.Controllers
         /// <param name="token">A <see cref="CancellationToken"/> used for cancelling asynchronous operations.</param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
         [HttpGet]
-        public async Task<IActionResult> GetFirstNameAsync(CancellationToken token)
+        public async Task<IActionResult> GetPersonalDetails(CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
 
-            var result = await this.mediator.Send(new GetFirstNameQuery(), token);
+            var result = await this.mediator.Send(new GetPersonalDetailsQuery(), token);
 
             if (result.Success)
             {
-                return this.Ok(result.Resource);
+                var view = this.mapper.Map<PersonalDetailsViewModel>(result.Resource);
+                return this.Ok(view);
             }
 
             return this.FromApplicationException(result);

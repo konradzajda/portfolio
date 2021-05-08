@@ -40,15 +40,15 @@
             Gets a value indicating whether application's response is successful.
             </summary>
         </member>
-        <member name="T:Application.Handlers.PersonalDetails.GetFirstNameQueryHandler">
+        <member name="T:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler">
             <summary>
-            Handler of the <see cref="T:Application.Queries.PersonalDetails.GetFirstNameQuery"/>.
+            Handler of the <see cref="T:Application.Queries.PersonalDetails.GetPersonalDetailsQuery"/>.
             </summary>
         </member>
-        <member name="M:Application.Handlers.PersonalDetails.GetFirstNameQueryHandler.Handle(Application.Queries.PersonalDetails.GetFirstNameQuery,System.Threading.CancellationToken)">
+        <member name="M:Application.Handlers.PersonalDetails.GetPersonalDetailsQueryHandler.Handle(Application.Queries.PersonalDetails.GetPersonalDetailsQuery,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
-        <member name="T:Application.Queries.PersonalDetails.GetFirstNameQuery">
+        <member name="T:Application.Queries.PersonalDetails.GetPersonalDetailsQuery">
             <summary>
             Defines query for getting first name.
             </summary>

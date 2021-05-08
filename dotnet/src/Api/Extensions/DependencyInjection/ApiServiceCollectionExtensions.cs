@@ -2,6 +2,9 @@
 // Copyright (c) Konrad Zajda. All rights reserved.
 // </copyright>
 
+using System;
+using System.IO;
+
 using Api;
 using MediatR;
 using Microsoft.OpenApi.Models;
@@ -13,6 +16,8 @@ namespace Microsoft.Extensions.DependencyInjection
     /// </summary>
     internal static class ApiServiceCollectionExtensions
     {
+        private const string ApiDocsFileName = "portfolio_api.xml";
+
         /// <summary>
         /// Adds API's services.
         /// </summary>
@@ -26,11 +31,14 @@ namespace Microsoft.Extensions.DependencyInjection
                     "v1",
                     new OpenApiInfo
                     {
-                        Title = ApiInfo.Name, Version = "v1",
+                        Title = ApiInfo.Name, Version = ApiInfo.Version,
                     });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, ApiDocsFileName));
             });
 
             services.AddMediatR(ApiInfo.MediatRAssemblies);
+
+            services.AddAutoMapper(ApiInfo.MapperProfiles);
         }
     }
 }

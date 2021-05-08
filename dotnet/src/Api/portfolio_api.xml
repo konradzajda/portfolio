@@ -29,13 +29,14 @@
             An controller for managing personal details resources.
             </summary>
         </member>
-        <member name="M:Api.Personal.Controllers.PersonalDetailsController.#ctor(MediatR.IMediator)">
+        <member name="M:Api.Personal.Controllers.PersonalDetailsController.#ctor(MediatR.IMediator,AutoMapper.IMapper)">
             <summary>
             Initializes a new instance of the <see cref="T:Api.Personal.Controllers.PersonalDetailsController"/> class.
             </summary>
             <param name="mediator">A mediator, see <see cref="T:MediatR.IMediator"/>.</param>
+            <param name="mapper">A mapper, see <see cref="T:AutoMapper.IMapper"/>.</param>
         </member>
-        <member name="M:Api.Personal.Controllers.PersonalDetailsController.GetFirstNameAsync(System.Threading.CancellationToken)">
+        <member name="M:Api.Personal.Controllers.PersonalDetailsController.GetPersonalDetails(System.Threading.CancellationToken)">
             <summary>
             Gets person's first name.
             </summary>
@@ -65,7 +66,9 @@
             </summary>
         </member>
         <member name="T:Api.Startup">
-            <inheritdoc />
+            <summary>
+            Startup class.
+            </summary>
         </member>
         <member name="M:Api.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
@@ -74,10 +77,16 @@
             <param name="environment">Provides details about host's environment, see <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
         </member>
         <member name="M:Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <inheritdoc/>
+            <summary>
+            Configures dependency injection container.
+            </summary>
+            <param name="services">A collection of the services.</param>
         </member>
         <member name="M:Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
-            <inheritdoc/>
+            <summary>
+            Configure middlewares.
+            </summary>
+            <param name="app">An application builder, see <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.</param>
         </member>
         <member name="T:Microsoft.AspNetCore.Mvc.ApplicationResultControllerBaseExtensions">
             <summary>
