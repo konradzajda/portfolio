@@ -25,5 +25,10 @@ namespace Api
         {
             Assembly.GetAssembly(typeof(ApplicationDependencyInjection)),
         };
+
+        /// <summary>
+        /// Gets version of the API's project.
+        /// </summary>
+        internal static string Version => Assembly.GetAssembly(typeof(ApiInfo))?.GetName().Version?.ToString();
     }
 }
