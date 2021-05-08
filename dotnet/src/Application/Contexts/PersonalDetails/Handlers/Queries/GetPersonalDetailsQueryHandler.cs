@@ -3,6 +3,7 @@
 // </copyright>
 
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -47,12 +48,14 @@ namespace Application.Handlers.PersonalDetails
                 throw new ArgumentNullException(nameof(request));
             }
 
-            return this.HandleInternal(cancellationToken);
+            return this.HandleInternal(request, cancellationToken);
         }
 
-        private async Task<IResult<PersonalDetailsResource>> HandleInternal(CancellationToken token)
+        private async Task<IResult<PersonalDetailsResource>> HandleInternal(
+            GetPersonalDetailsQuery request, CancellationToken token)
         {
             var details = await this.context.Personals
+                .Where(y => y.Id == request.PersonId)
                 .ProjectTo<PersonalDetailsResource>(this.mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync(token);
 

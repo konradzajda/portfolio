@@ -30,7 +30,7 @@ namespace Api.Personal.Controllers
             var token = new CancellationToken(true);
 
             // When
-            Func<Task> call = () => this.sut.GetPersonalDetails(token);
+            Func<Task> call = () => this.sut.GetPersonalDetails(1, token);
 
             // Then
             await call.Should().ThrowExactlyAsync<OperationCanceledException>();

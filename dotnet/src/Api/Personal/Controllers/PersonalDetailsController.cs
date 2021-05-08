@@ -37,14 +37,15 @@ namespace Api.Personal.Controllers
         /// <summary>
         /// Gets person's first name.
         /// </summary>
+        /// <param name="id">Unique identifier of the person to look for.</param>
         /// <param name="token">A <see cref="CancellationToken"/> used for cancelling asynchronous operations.</param>
         /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
-        [HttpGet]
-        public async Task<IActionResult> GetPersonalDetails(CancellationToken token)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPersonalDetails([FromRoute] ulong id, CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
 
-            var result = await this.mediator.Send(new GetPersonalDetailsQuery(), token);
+            var result = await this.mediator.Send(new GetPersonalDetailsQuery(id), token);
 
             if (result.Success)
             {

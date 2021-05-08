@@ -13,5 +13,18 @@ namespace Application.Queries.PersonalDetails
     /// </summary>
     public sealed class GetPersonalDetailsQuery : IRequest<IResult<PersonalDetailsResource>>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetPersonalDetailsQuery"/> class.
+        /// </summary>
+        /// <param name="personId">Unique identifier of the person to find.</param>
+        public GetPersonalDetailsQuery(ulong personId)
+        {
+            this.PersonId = personId;
+        }
+
+        /// <summary>
+        /// Gets a unique identifier of the person to find.
+        /// </summary>
+        public ulong PersonId { get; }
     }
 }

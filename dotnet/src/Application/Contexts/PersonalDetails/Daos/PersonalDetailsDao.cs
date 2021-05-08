@@ -12,12 +12,12 @@ namespace Application.Daos
     /// <summary>
     /// Represents data access object for the <see cref="PersonalDetailsResource"/>.
     /// </summary>
-    public class PersonalDetailsDao : IUnique<long>, ITrackable
+    public class PersonalDetailsDao : IUnique<ulong>, ITrackable
     {
         /// <summary>
         /// Gets unique identifier, see <see cref="IUnique{T}.Id"/>.
         /// </summary>
-        public long Id { get; init; }
+        public ulong Id { get; init; }
 
         /// <summary>
         /// Gets creation date, see <see cref="ITrackable.CreationDateUtc"/>.
