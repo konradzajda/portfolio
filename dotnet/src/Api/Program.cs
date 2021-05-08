@@ -30,6 +30,7 @@ namespace Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseKestrel(y => y.AddServerHeader = false);
                     webBuilder.UseStartup<Startup>();
                 });
     }
