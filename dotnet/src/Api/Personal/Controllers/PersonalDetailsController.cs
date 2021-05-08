@@ -46,8 +46,7 @@ namespace Api.Personal.Controllers
                 return this.Ok(result.Resource);
             }
 
-            // TODO: Add extension method to convert failed IResult{T} to valid status code action result.
-            return this.StatusCode((int)result.Exception.StatusCode);
+            return this.FromApplicationException(result);
         }
     }
 }

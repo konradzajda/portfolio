@@ -15,5 +15,10 @@ namespace Application.Abstractions
         /// Gets a <see cref="HttpStatusCode"/> related to application's exception.
         /// </summary>
         HttpStatusCode StatusCode { get; }
+
+        /// <summary>
+        /// Gets a message of the exception.
+        /// </summary>
+        string Message { get; }
     }
 }

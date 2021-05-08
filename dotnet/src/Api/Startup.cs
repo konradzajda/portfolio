@@ -41,7 +41,7 @@ namespace Api
                     });
             });
 
-            services.AddMediatR(ApplicationInfo.MediatRAssemblies);
+            services.AddMediatR(ApiInfo.MediatRAssemblies);
 
             return services.BuildServiceProvider();
         }
