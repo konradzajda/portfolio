@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>portfolio_app.xml</DocumentationFile>
     </PropertyGroup>
 
     <!-- Include analyzers in non-production environment only  -->
@@ -19,6 +21,13 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Contexts\PersonalDetails\Models" />
     </ItemGroup>
     
 </Project>

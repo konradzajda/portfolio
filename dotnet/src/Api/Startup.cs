@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace Api
 {
@@ -29,16 +28,9 @@ namespace Api
         /// <inheritdoc/>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc(
-                    "v1",
-                    new OpenApiInfo
-                    {
-                        Title = "Api", Version = "v1",
-                    });
-            });
+            services.AddApi();
+            services.AddApplication();
+            services.AddInfrastructure();
 
             return services.BuildServiceProvider();
         }
@@ -50,7 +42,7 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", ApiInfo.Name + " " + ApiInfo.Version));
             }
 
             app.UseHttpsRedirection();

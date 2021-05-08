@@ -1,14 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         
-        <Version>0.0.1</Version>
-        
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <DocumentationFile>portfolio_api.xml</DocumentationFile>
-        
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DocumentationFile>portfolio_infra.xml</DocumentationFile>
     </PropertyGroup>
 
     <!-- Include analyzers in non-production environment only  -->
@@ -19,25 +15,16 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        
+
         <!-- Other analyzers-->
         <PackageReference Include="SonarAnalyzer.CSharp" Version="8.22.0.31243">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        
+
     </ItemGroup>
-    
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="9.0.0" />
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <ProjectReference Include="..\Application\Application.csproj" />
-        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     </ItemGroup>
 
 </Project>
