@@ -26,6 +26,11 @@ namespace Application.Handlers.PersonalDetails
         private readonly IPersonalDetailsContext context;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetPersonalDetailsQueryHandler"/> class.
+        /// </summary>
+        /// <param name="context">A context of personal details, see <see cref="IPersonalDetailsContext"/>.</param>
+        /// <param name="mapper">A mapper, see <see cref="IMapper"/>.</param>
         public GetPersonalDetailsQueryHandler(IPersonalDetailsContext context, IMapper mapper)
         {
             this.context = context;

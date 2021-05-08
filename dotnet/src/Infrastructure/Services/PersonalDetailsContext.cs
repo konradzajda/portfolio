@@ -1,13 +1,13 @@
-// <copyright file="/Users/konrad/Documents/GitHub/portfolio/dotnet/src/Infrastructure/Services/PersonalDetailsContext.cs" company="Konrad Zajda">
+// <copyright file="PersonalDetailsContext.cs" company="Konrad Zajda">
 // Copyright (c) Konrad Zajda. All rights reserved.
 // </copyright>
 
 using System;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Application.Abstractions;
 using Application.Daos;
 using Application.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,16 +15,25 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Infrastructure.Services
 {
+    /// <summary>
+    /// Provides data access object managing based on the Entity Framework's <see cref="DbContext"/>.
+    /// </summary>
     public class PersonalDetailsContext : DbContext, IPersonalDetailsContext
     {
-        public DbSet<PersonalDetailsDao> Personals { get; init; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PersonalDetailsContext"/> class.
+        /// </summary>
+        /// <param name="options">Options of the context, see <see cref="DbContextOptions{TContext}"/>.</param>
         public PersonalDetailsContext(DbContextOptions<PersonalDetailsContext> options)
             : base(options)
         {
         }
 
-        public Task<int> SaveChangesAsync(CancellationToken token = default)
+        /// <inheritdoc />
+        public DbSet<PersonalDetailsDao> Personals { get; init; }
+
+        /// <inheritdoc />
+        public new Task<int> SaveChangesAsync(CancellationToken token = default)
         {
             var trackables = this.ChangeTracker.Entries<ITrackable>()
                 .ToArray();

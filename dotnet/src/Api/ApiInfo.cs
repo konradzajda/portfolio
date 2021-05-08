@@ -28,7 +28,10 @@ namespace Api
             Assembly.GetAssembly(typeof(ApplicationDependencyInjection)),
         };
 
-        internal static Type[] MapperProfiles => new Type[]
+        /// <summary>
+        /// Gets all <see cref="Profile"/> types in the solution.
+        /// </summary>
+        internal static Type[] MapperProfiles => new[]
         {
             typeof(ApiProfile),
             typeof(ApplicationProfile),

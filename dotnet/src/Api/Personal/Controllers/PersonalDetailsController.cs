@@ -4,6 +4,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+
 using Api.Personal.Views;
 using Application.Queries.PersonalDetails;
 using AutoMapper;
